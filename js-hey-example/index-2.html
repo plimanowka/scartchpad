@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <style>
+            html {
+                background-color: white;
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            }
+            .napis {
+                cursor: pointer;
+            }
+            .napis:hover {
+                color: red;
+            }
+        </style>
+        <script>
+            const tekst = 'ThirdEye';
+            /**
+             * Owijamy każdą literkę tekstu w element <span> - żeby była każda z osobna 'klikalna'
+             */
+            const template = '<span class="napis">${}</span>';
+
+            function start() {
+                var div = document.getElementById("napis");
+                var html = '';
+                for(i = 0; i < tekst.length; i++){
+                    html += template.replace("${}", tekst[i]);
+                }
+                div.innerHTML = html;
+            }
+
+            window.onload = start;
+        </script>
+    </head>
+    <body>
+        <h1>Welcome</h1>
+        <div id="napis"></div>
+    </body>
+</html>

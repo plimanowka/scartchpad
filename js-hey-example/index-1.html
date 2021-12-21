@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <style>
+            html {
+                background-color: white;
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            }
+            .napis {
+                cursor: pointer;
+            }
+            .napis:hover {
+                color: red;
+            }
+        </style>
+        <script>
+            const tekst = 'ThirdEye';
+
+            function start() {
+                var div = document.getElementById("napis");
+                div.innerText = tekst;
+            }
+
+            /**
+             * teraz wstawiamy tekst programowo - po całkowitym załadowaniu strony
+             */
+            window.onload = start;
+        </script>
+    </head>
+    <body>
+        <h1>Welcome</h1>
+        <div id="napis" style="napis"></div>
+    </body>
+</html>

@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <style>
+            html {
+                background-color: white;
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            }
+            .napis {
+                cursor: pointer;
+            }
+            .napis:hover {
+                color: red;
+            }
+        </style>
+        <script>
+            const url = 'http://www.onet.pl'; // adres URL jaki chcemy otworzyć jak użytkownik wyklika 'hey'
+            var stan = ''; // przy załadowaniu strony stan ustalamy na pusty ciąg znaków
+
+            function clickHandler(e) {
+                // wyjmujemy zawartość (tekst) klikniętego elementu <span>
+                var literka = e.target.innerText;
+                // dodajemy do aktualnego stanu
+                stan = stan+literka;
+                // jeśli stan ma więcej niż 3 literki, to obcinamy go do ostatnich 3
+                if (stan.length > 3) stan = stan.substring(1);
+                // jeśli stan to 'hey', to otwieramy stronę docelową
+                if (stan.toLowerCase() == 'hey') window.open(url, '_blank');
+            }
+
+            const tekst = 'ThirdEye';
+            const template = '<span class="napis">${}</span>';
+
+            function start() {
+                var div = document.getElementById("napis");
+                var html = '';
+                for(i = 0; i < tekst.length; i++){
+                    html += template.replace("${}", tekst[i]);
+                }
+                div.innerHTML = html;
+                /**
+                 * i dodajemy obsługę kliknięć myszką
+                 */
+                div.onclick = (e) => clickHandler(e);
+            }
+
+            window.onload = start;
+        </script>
+    </head>
+    <body>
+        <h1>Welcome</h1>
+        <div id="napis"></div>
+    </body>
+</html>
